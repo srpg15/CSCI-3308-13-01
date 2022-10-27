@@ -1,0 +1,38 @@
+Team Number: 1
+
+Team Name: Workout Pals
+
+Team Members:
+1. Taisiia Sherstiukova
+tash2960@colorado.edu
+@taya.sherstyukova
+
+2. Evan Zachary
+Evan.Zachary@colorado.edu
+@srpg15
+
+3. Saulo Guzman
+Saulo.Guzman@colorado.edu
+@sagu3628
+
+4. Hassan Alanazi
+Hassan.Alanazi@colorado.edu
+
+5. Ruby Gavagan
+ruga6497@colorado.edu
+@RubyGavagan
+
+Application Name: Fitness Journey
+
+Overview:
+User registers for account or sign into existing account.
+They select preferences for their fitness goals.
+They are then given workout routines that apply to their fitness goals.
+Workout Plans are a week by week routine.
+Details of workout routine include type of exercise, duration/repitions, and discription of exercise.
+You can modify preferences to get new routines.
+Logout distroys session.
+
+Vision statement:
+For anyone interested in fitness who wants a personalized workout plan. The FitnessJourney is a website that creates workout plans based on the user's
+preferences. Unlike applications with workout plans that require intensive knowlegde and experience of specific workouts/movements, our product is built for athletes of all experience levels.
