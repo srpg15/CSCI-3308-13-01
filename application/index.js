@@ -46,7 +46,7 @@ const dbConfig = {
       );
 
       app.get('/', (req, res) =>{
-        res.redirect('/discover'); 
+        res.redirect('/register'); 
       });
 
     
@@ -114,46 +114,17 @@ const dbConfig = {
     });
 
     // Authentication Middleware.
-const auth = (req, res, next) => {
-    console.log(req.session)
-    if (!req.session.user) {
-      // Default to register page.
-      return res.redirect('/register');
-    }
-    next();
-  };
-  // Authentication Required
-  app.use(auth);
+// const auth = (req, res, next) => {
+//     console.log(req.session)
+//     if (!req.session.user) {
+//       // Default to register page.
+//       return res.redirect('/register');
+//     }
+//     next();
+//   };
+//   // Authentication Required
+//   app.use(auth);
 
-  app.get('/discover', (req, res) =>{
-    axios({
-   url: `https://app.ticketmaster.com/discovery/v2/events.json`,
-      method: 'GET',
-      dataType:'json',
-      params: {
-          "apikey": req.session.user.api_key,
-          "keyword": "The Backseat Lovers" ,//you can choose any artist/event here
-          "size": 10,
-      }
-   })
-   .then(results => {
-      console.log(results.data._embedded.events[0]); // the results will be displayed on the terminal if the docker containers are running
-     // Send some parameters
-      res.render("pages/discover",{
-        results: results.data._embedded.events
-      });
-   })
-   .catch(error => {
-    // Handle errors
-      res.render("pages/discover",{
-      results: [],
-      message: "Incorrect username or password",
-      error:true
-  })
-
- });
-
-  });
 
 app.get('/logout', (req, res) => {
   req.session.destroy();
