@@ -54,6 +54,11 @@ const dbConfig = {
         res.render('pages/login');
       });
 
+
+      app.get('/home', (req, res) => {
+        res.render('pages/home');
+      });
+
     app.get('/register', (req, res) => {
         res.render('pages/register');
       });
