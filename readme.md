@@ -32,5 +32,5 @@ Docker
 5. Instructions on how to run the application locally
 Start running docker
 Enter docker compose up in terminal
-In the browser, search [localhost 3000](http://localhost:3000/)
+In the browser, search http://localhost:3000/
 
