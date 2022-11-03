@@ -16,7 +16,6 @@ const dbConfig = {
   };
   
   const db = pgp(dbConfig);
-  // console.log("Api key", process.env.API_KEY)
 
 
   // test your database
