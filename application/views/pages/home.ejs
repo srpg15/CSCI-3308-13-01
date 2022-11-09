@@ -7,23 +7,39 @@
           <!-- THE REST OF YOUR HTML CODE GOES HERE -->
           <h1><centre>Workouts for this Week</centre></h1>
 
-          <button type="button" class="btn btn-primary">Forcus area </button>
-          <button type="button" class="btn btn-primary"> Workout Duration </button>
-          <button type="button" class="btn btn-primary">Timeline</button>
+          
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Day</option>
+            <option value="1">Monday</option>
+            <option value="2">Tueday</option>
+            <option value="3">Wednesday</option>
+            <option value="4">Thurday</option>
+            <option value="6">Friday</option>
+            <option value="7">Saturday</option>
+          </select>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Select Exercise</option>
+            <option value="1">Database</option>
+            <option value="2">Database</option>
+            <option value="3">Database</option>
+          </select>
+          <button type="button" class="btn btn-primary">add</button>
   
 
           <table class="table">
             <thead>
               <tr>
                 <th scope="col">Day</th>
-                <th scope="col">Workout</th>
-                <th scope="col">Muscle</th>
+                <th scope="col">Exercise name</th>
                 <th scope="col">Reqs</th>
+                <th scope="col">Set Number</th>
+                <th scope="col">description</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th scope="row">Monday</th>
+                <td>Database...</td>
                 <td>Database...</td>
                 <td>Database...</td>
                 <td>Database...</td>
@@ -33,11 +49,13 @@
                 <td>Database...</td>
                 <td>Database...</td>
                 <td>Database...</td>
+                <td>Database...</td>
               </tr>
               <tr>
                 <th scope="row">Wednesday</th>
                 <td> Database...</td>
                 <td> Database...</td>
+                <td>Database...</td>
                 <td>Database...</td>
               </tr>
               <tr>
@@ -45,11 +63,13 @@
                 <td> Database...</td>
                 <td> Database...</td>
                 <td>Database...</td>
+                <td>Database...</td>
               </tr>
               <tr>
                 <th scope="row">Friday</th>
                 <td> Database...</td>
                 <td> Database...</td>
+                <td>Database...</td>
                 <td>Database...</td>
               </tr>
               <tr>
@@ -57,18 +77,35 @@
                 <td> Database...</td>
                 <td> Database...</td>
                 <td>Database...</td>
+                <td>Database...</td>
               </tr>
               <tr>
                 <th scope="row">Sunday</th>
                 <td> Database...</td>
                 <td> Database...</td>
                 <td>Database...</td>
+                <td>Database...</td>
               </tr>
             </tbody>
           </table>
-
-      
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Day</option>
+            <option value="1">Monday</option>
+            <option value="2">Tueday</option>
+            <option value="3">Wednesday</option>
+            <option value="4">Thurday</option>
+            <option value="6">Friday</option>
+            <option value="7">Saturday</option>
+          </select>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Your Exercise</option>
+            <option value="1">Database</option>
+            <option value="2">Database</option>
+            <option value="3">Database</option>
+          </select>
+          <button type="button" class="btn btn-primary">Remove</button>
             
+
         </div>
       </main>
 
