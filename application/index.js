@@ -140,12 +140,27 @@ app.get('/logout', (req, res) => {
 
 
 
-
+    
+  app.get("/Exercises_name", function (req, res) {
+    let query = "SELECT exercise_name FROM exercises;";
+    db.any(query)
+      .then(function(rows) {
+        res.send(JSON.stringify(rows))
+      })
+      .catch(console.error)
+  });
   
-
+  app.get("/Exercises_User", function (req, res) {
+    let query = "SELECT exercise_name FROM exercises;";
+    db.any(query)
+      .then(function(rows) {
+        res.send(JSON.stringify(rows))
+      })
+      .catch(console.error)
+  });
 
 
 
   app.listen(3000);
   console.log("Server is listening on port 3000");
-  s
+  
