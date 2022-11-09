@@ -1,36 +1,33 @@
 <%- include ('../partials/header') %>
-<%- include ('../pages/menu_navbar') %>
+
 <main>
   <div class="container">
     <!-- THE REST OF YOUR HTML CODE GOES HERE -->
-    <h2> Register</h2>
-    <form action="/register" method="POST">
-        <div class="form-group">
-          <label for="InputEmail" class="form-check-label">Username</label>
-          <input 
-            type="username" 
-            class="form-control" 
-            id="username"
-            name="username" 
-            aria-describedby="emailHelp" 
-            placeholder="Enter Username">
-          
+    <!-- message is not part of files, can either add message or leave commented -->
+    <!-- <%- include ('../partials/message') %> -->
+    <h2>Register</h2>
+    <form action="/register" method="post">
+      <table class="table">
+      <tr>
+      <th>
+        <div class="mb-3">
+          <label for="username" class="form-label" required >Username</label>
+          <input type="username" id="username" name="username" class="form-control" placeholder = "Username" required>
+          <label for="password" class="form-label" required >Password</label>
+          <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
         </div>
-        <div class="form-group">
-          <label for="InputUsername" class="form-label">Password</label>
-          <input 
-          type="password" 
-          class="form-control" 
-          id="password" 
-          name="password"
-          placeholder="Enter Password">
-          <div class="etc-login-form">
-            <p> Already have an account? <a href="/login">Login here</a></p>
+      </th>
+      </tr>
+      
+      <th>
+        <div class="etc-login-form">
+            Already have an account? <a href="/login">   Sign in</a>
         </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Register</button>
-  
-          </div>
+        <button class="btn btn-primary" type="submit">Sign up</button>
+        
+      </th>
+      
+      </table>
       </form>
   </div>
 </main>
