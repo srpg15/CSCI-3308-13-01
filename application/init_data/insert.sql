@@ -21,7 +21,7 @@ INSERT INTO exercises(exercise_id, exercise_name, reps, set_num, description, ca
     (11, "Upright Rows", 4, 5, "With dumbbells in both hands, lift hands up to shoulder height while keeping arms close to core to work the back", 2);
 INSERT INTO users(user_id, username, password) VALUES
     (1, test, test1),
-    (2, cubuff, 01234),
+    (2, cubuff, xyz),
     (3, ralphie, abcde);
 INSERT INTO users_to_exercises(day_id, day_name, user_id, exercise_id) VALUES
     (1, 'Sunday', 1, 4),
