@@ -1,0 +1,85 @@
+<%- include ('../partials/header') %>
+<%- include ('../pages/menu_navbar') %>
+<main>
+
+  <div class="container">
+<!-- Button trigger modal -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="changePassword" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Change Password</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="/profile/Change-password" method="post">
+            <div class="modal-body">
+                <label for="password" class="form-check-label">Old Password</label>
+                <input type="password" name="Old_Password" id="Old_Password" class="form-control" required>
+                <label for="password" class="form-check-label">New Password</label>
+                <input type="password" name="new_Password" id="new_Password" class="form-control" required>
+                <label for="password" class="form-check-label">Re-Enter Password</label>
+                <input type="password" name="Re_Enter_Password" id="Re_Enter_Password" class="form-control" required>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Change Password</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="changeUsername" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Change Username</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="/profile/Change-Username" method="post">
+            <div class="modal-body">
+                <label for="name" class="form-check-label">Old Username</label>
+                <input type="text" name="Old_Username" id="Old_Username" class="form-control" required>
+                <label for="name" class="form-check-label">New Username</label>
+                <input type="text" name="new_username" id="new_username" class="form-control" required>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Change Username</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col"><%- include ('../partials/message') %></div>
+    <h1>Profile</h1>
+    <table class="table">
+        <tr>
+            <th> Username: </th>
+            <th> <%= username %></th>
+        </tr>
+        <tr>
+            <th> Password: </th>
+            <th> ********  </th>
+        </tr>
+        <tr>
+            <th>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#changeUsername">Change username</button>
+            </th>
+            <th>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#changePassword">Change Password</button>
+            </th>
+        </tr>
+    </table>
+
+
+
+  </div>
+</main>
+
+<%- include ('../partials/footer') %>
