@@ -1,0 +1,2 @@
+Update Readme based on Lab 10 write up
+Push to git 3 times per week-> only to branch that's merged, not main
