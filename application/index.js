@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
 const axios = require('axios');
+const { render } = require('ejs');
 
 // database configuration
 const dbConfig = {
@@ -13,6 +14,12 @@ const dbConfig = {
     database: process.env.POSTGRES_DB,
     user: process.env.POSTGRES_USER,
     password: process.env.POSTGRES_PASSWORD,
+  };
+
+
+  const user = { 
+    user_id: undefined,
+    username: undefined,
   };
   
   const db = pgp(dbConfig);
@@ -84,6 +91,105 @@ const dbConfig = {
       });
     });
 
+    app.get('/profile', (req, res) =>{
+      res.render('pages/Profile',{username: user.username});
+    });
+
+    app.post('/profile/Change-username', async (req, res) =>{
+      let old_username = req.body.Old_Username;
+      let new_username = req.body.new_username;
+      let query = `select * from users where users.username = '${user.username}'`;
+      await db.query(query)
+      .then(async data =>{
+        if(old_username === user.username){
+          let modify = `update users set username = '${new_username}' where username = '${user.username}';`;
+          db.query(modify)
+            .then( message =>{
+              user.username = new_username;
+              res.render('pages/profile',{
+                message: "Username updated successfully",
+                username: user.username
+              });
+
+            })
+            .catch(err=>{
+              res.render('pages/profile',{
+                message: "couldn't update the Username",
+                username: user.username,
+                error:true
+              });
+            });
+        }else{
+          res.render('pages/profile',{
+            message: "Usernames doesn't match",
+            username: user.username,
+            error:true
+          });
+        }
+      })
+      .catch(err =>{
+        res.render('pages/profile',{
+          message: "couldn't update the Username",
+          username: user.username,
+          error:true
+        });
+      });
+    });
+
+    app.post('/profile/Change-password', async (req, res) =>{
+      let old_passord = req.body.Old_Password;
+      let new_password = req.body.new_Password;
+      let check_new_password = req.body.Re_Enter_Password;
+      let query = `select * from users where users.username = '${user.username}'`;
+      await db.query(query)
+      .then(async data =>{
+        const match = await bcrypt.compare(old_passord, data[0].password);
+        if(match){
+          if(new_password === check_new_password && new_password!= ''){
+            // 
+            const hash = await bcrypt.hash(new_password, 10);
+            let modify = `update users set password = '${hash}' where username = '${user.username}';`;
+            db.query(modify)
+            .then( message =>{
+              res.render('pages/profile',{
+                message: "password updated successfully",
+                username: user.username
+              });
+
+            })
+            .catch(err=>{
+              res.render('pages/profile',{
+                message: "couldn't update the password",
+                username: user.username,
+                error:true
+              });
+            });
+
+          }else{
+            res.render('pages/profile',{
+            message: "the passwords you entered doesn't match ",
+            username: user.username,
+            error:true
+          });
+          }
+        }else{
+          res.render('pages/profile',{
+            message: "incorrect password",
+            username: user.username,
+            error:true
+          });
+        }
+      })
+      .catch(err=>{
+        res.render('pages/profile',{
+          message: "couldn't update the password",
+          username: user.username,
+          error:true
+        });
+      });
+    });
+    
+
     
     app.post('/login', async (req, res) => {
         //the login goes here
@@ -97,8 +203,9 @@ const dbConfig = {
             req.session.user = {
                 api_key: process.env.API_KEY,
                 };
+                user.username = data[0].username;
                 req.session.save();
-                res.redirect('/discover');
+                res.redirect('/home');
         }
         else{
             res.render("pages/register",{
