@@ -23,7 +23,6 @@ const dbConfig = {
   };
   
   const db = pgp(dbConfig);
-  // console.log("Api key", process.env.API_KEY)
 
 
   // test your database
@@ -264,13 +263,12 @@ const dbConfig = {
 //   // Authentication Required
 //   app.use(auth);
 
-
-app.get('/logout', (req, res) => {
+// GET /logout
+app.get("/logout", (req, res) => {
   req.session.destroy();
-    res.render('pages/login',{
-        message: "Logged out Successfully"
-    })
-  });
+  res.render("pages/login");
+  message.log ('Logged out Successfully');
+});
 
 
 
@@ -281,4 +279,8 @@ app.get('/logout', (req, res) => {
 
   app.listen(3000);
   console.log("Server is listening on port 3000");
+<<<<<<< HEAD
   
+=======
+      
+>>>>>>> b4db99738ca6b2395c15781735376d96dbef80f3
