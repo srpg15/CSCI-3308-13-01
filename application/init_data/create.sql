@@ -1,3 +1,4 @@
+
 -- User creds table 
 -- Each user gets a unique user_id that ties their account to their individual routines
 CREATE TABLE users(
