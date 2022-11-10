@@ -4,12 +4,16 @@ Profile page with its api routes by @HassanAlanazi in #11
 Insert sql tables by @RubyGavagan in #12
 Login/register design by @tayasherstyukova in #13
 Nav Bar with better functionality @tayashertyukova
+Added more workout daily routines @RubyGavagan
 Updated user 3's workout routine data by @RubyGavagan in #14
 Create logout.sql by @RubyGavagan in #15
 Tweaked GET logout with new logout page by @RubyGavagan in #16
 GET API for Exercise_name and Home page update by @sagu3628
 New Home page to reflect database @sagu3628
+Update insert.sql format @RubyGavagan
+Corrected data type in insert.sql @RubyGavagan
 API funcation that able to get data from databases @sagu3628
+Added values to insert.sql @RubyGavagan
 add more prebaked exercises @srpg15
 New Contributors
 @HassanAlanazi
