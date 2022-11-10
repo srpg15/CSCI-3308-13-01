@@ -7,7 +7,8 @@ Updated user 3's workout routine data by @RubyGavagan in #14
 Create logout.sql by @RubyGavagan in #15
 Tweaked GET logout with new logout page by @RubyGavagan in #16
 GET API for Exercise_name and Home page update by @sagu3628
-insert by @sagu3628
+New Home page to reflect database @sagu3628
+API funcation that able to get data from databases @sagu3628
 add more prebaked exercises @srpg15
 New Contributors
 @HassanAlanazi
