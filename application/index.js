@@ -37,9 +37,8 @@ const dbConfig = {
 
 
 
-    const fetch_excersie_name = () => {
+    const fetch_excercise_name = (query) => {
       return new Promise((resolve, reject) => {
-        let query = "SELECT exercise_name FROM exercises;";
 
         db.any(query)
           .then(function(rows) {
@@ -82,7 +81,7 @@ const dbConfig = {
 
 
       app.get('/home', async (req, res) => {
-        fetch_excersie_name()
+        fetch_excercise_name("SELECT exercise_name FROM exercises;")
         .then(data => {
           res.render('pages/home', {data: data});
         })
