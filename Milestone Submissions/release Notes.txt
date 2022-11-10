@@ -1,0 +1,18 @@
+What's Changed
+Update register.ejs by @HassanAlanazi in #9
+Profile page with its api routes by @HassanAlanazi in #11
+Insert sql tables by @RubyGavagan in #12
+Login register design by @tayasherstyukova in #13
+Updated user 3's workout routine data by @RubyGavagan in #14
+Create logout.sql by @RubyGavagan in #15
+Tweaked GET logout with new logout page by @RubyGavagan in #16
+GET API for Exercise_name and Home page update by @sagu3628
+insert by @sagu3628
+add more prebaked exercises @srpg15
+New Contributors
+@HassanAlanazi
+@RubyGavagan
+@tayasherstyukova
+@sagu3628
+@srpg15
+Full Changelog: https://github.com/srpg15/CSCI-3308-13-01/commits/v1.0
