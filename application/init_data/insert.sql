@@ -7,6 +7,7 @@ INSERT INTO category(category_id, category_name) VALUES
     (4, 'Cardio'),
     (5, 'Shoulders'),
     (6, 'Calisthenics');
+    (7, 'Arms')
 INSERT INTO exercises(exercise_id, exercise_name, reps, set_num, description, category_id) VALUES
     (1, 'Barbell Bench Press', 5, 4, 'The classic flat bench press. Reps and Sets are designed for optimal hypertrophy', 1),
     (2, 'Barbell Standing Squat', 5, 4, 'Standing squat exercise that targets most of the lower body strength and stability', 3),
@@ -19,6 +20,14 @@ INSERT INTO exercises(exercise_id, exercise_name, reps, set_num, description, ca
     (9, 'Eliptical', 4, 5, 'Run on eliptical for 3 minutes straight for each rep. Take 90 second between sets', 4),
     (10, 'Cable Crossover', 10, 3, 'With cables in each hand, pull hand together in round motion to focus burn on chest', 1),
     (11, 'Upright Rows', 4, 5, 'With dumbbells in both hands, lift hands up to shoulder height while keeping arms close to core to work the back', 2);
+    (12, 'Incline Bench', 8, 4, 'An alteration of the bench press that works front shoulders and chest at the same time', 1);
+    (13, 'Bent Over Rows', 6, 5, 'A barbell row that is done in a bent over position to work upper strength and lower back stability', 2);
+    (14, 'Tricep Extension', 10, 4, 'Using a cable or dumbbell, extend your arm to work triceps', 7);
+    (15, 'Hammer Curl', 8, 5, 'A typical bicep curl with arm in a neutral position and dumbbell handle pointing vertically', 7);
+    (16, 'Cable Fly', 8, 5, 'Using a fly machine standing or dumbbells on a flat bench, start with your arms wide at your sides then bring forwards until hands cross or dumbbells touch.', 1);
+    (17, 'Leg Curl', 8, 4, 'A typical leg curl using a machine. Works the back of the leg.', 3);
+    (18, 'Leg Extension', 12, 4, 'Leg extension using a machine. Isolates the quads.', 3);
+    (19, 'Calf Raise', 12, 4, 'Using a machine or free weights, perform weighted calf raises with adequate weight for repetition amount', 3);
 INSERT INTO users(user_id, username, password) VALUES
     (1, 'test', 'test1'),
     (2, 'cubuff', 'xyz'),
