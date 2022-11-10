@@ -108,7 +108,7 @@ const dbConfig = {
     ])
       .then(() =>{
        res.redirect('/login');
-
+    })
       .catch(err=>{
         console.log(err);
         res.redirect('/register')
