@@ -1,5 +1,6 @@
 <%- include ('../partials/header') %>
 <%- include ('../pages/menu_navbar') %>
+<%- include ('style') %>
 <main>
 
   <div class="container">
@@ -62,18 +63,16 @@
         <tr>
             <th> Username: </th>
             <th> <%= username %></th>
+            <th>
+                <button style="background:snow;color:grey;display:block; border-radius: 6px;font-size: 20px; ">Change username</button>
+            </th>
         </tr>
         <tr>
             <th> Password: </th>
             <th> ********  </th>
-        </tr>
-        <tr>
             <th>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#changeUsername">Change username</button>
-            </th>
-            <th>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#changePassword">Change Password</button>
-            </th>
+              <button style="background:snow;color:grey;display:block; border-radius: 6px;font-size: 20px;">Change Password</button>
+          </th>
         </tr>
     </table>
 

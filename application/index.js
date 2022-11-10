@@ -35,6 +35,26 @@ const dbConfig = {
       console.log('ERROR:', error.message || error);
     });
 
+
+
+    const fetch_excersie_name = () => {
+      return new Promise((resolve, reject) => {
+        let query = "SELECT exercise_name FROM exercises;";
+
+        db.any(query)
+          .then(function(rows) {
+            const data = rows
+            resolve(data)
+          })
+          .catch(e => {
+            reject(e)
+          })
+      })
+    }
+  
+
+  
+
     app.set('view engine', 'ejs');
     app.use(bodyParser.json());
     app.use(
@@ -61,14 +81,21 @@ const dbConfig = {
       });
 
 
-      app.get('/home', (req, res) => {
-        res.render('pages/home');
+      app.get('/home', async (req, res) => {
+        fetch_excersie_name()
+        .then(data => {
+          res.render('pages/home', {data: data});
+        })
+        .catch(e => {
+          console.log(e)
+        })
+        
       });
 
     app.get('/register', (req, res) => {
         res.render('pages/register');
       });
-
+    
 
 
     app.post('/register', async (req, res) => {
@@ -236,13 +263,19 @@ const dbConfig = {
 //   // Authentication Required
 //   app.use(auth);
 
-
-app.get('/logout', (req, res) => {
+// GET /logout
+app.get("/logout", (req, res) => {
   req.session.destroy();
-    res.render('pages/login',{
-        message: "Logged out Successfully"
-    })
-  });
+  res.render("pages/login");
+  message.log ('Logged out Successfully');
+});
+
+
+
+
+  
+
+
 
   app.listen(3000);
   console.log("Server is listening on port 3000");
