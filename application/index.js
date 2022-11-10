@@ -236,13 +236,12 @@ const dbConfig = {
 //   // Authentication Required
 //   app.use(auth);
 
-
-app.get('/logout', (req, res) => {
+// GET /logout
+app.get("/logout", (req, res) => {
   req.session.destroy();
-    res.render('pages/login',{
-        message: "Logged out Successfully"
-    })
-  });
+  res.render("pages/login");
+  message.log ('Logged out Successfully');
+});
 
   app.listen(3000);
   console.log("Server is listening on port 3000");
