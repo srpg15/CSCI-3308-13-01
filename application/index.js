@@ -216,14 +216,15 @@ const dbConfig = {
     app.post('/login', async (req, res) => {
   const query = `SELECT * FROM users WHERE username='${req.body.username}';`;
     db.any(query)
-    .then(async user => {
+    .then(async data => {
         const match = await bcrypt.compare(req.body.password, user[0].password); //await is explained in #8
         if(match){
             req.session.user = {
                 api_key: process.env.API_KEY,
               };
+              user.username = data[0].username;
               req.session.save();
-              res.redirect('/discover')
+              res.redirect('/home')
         }
         else{
           message.log ('Incorrect username or password.'); // message.ejs
