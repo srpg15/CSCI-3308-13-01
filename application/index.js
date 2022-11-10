@@ -272,15 +272,10 @@ app.get("/logout", (req, res) => {
 
 
 
-
   
 
 
 
   app.listen(3000);
   console.log("Server is listening on port 3000");
-<<<<<<< HEAD
-  
-=======
       
->>>>>>> b4db99738ca6b2395c15781735376d96dbef80f3
