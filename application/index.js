@@ -98,23 +98,20 @@ const dbConfig = {
     
 
 
+    // Register submission
     app.post('/register', async (req, res) => {
-        //the logic goes here
-        const username = req.body.username;
-        const password = req.body.password;
-        const hash = await bcrypt.hash(password, 10);
-        const query = 'insert into users (username, password) values ($1, $2) returning *';
-    db.any(query, [
-      username,
-      hash
-    ])
-      .then(() =>{
-       res.redirect('/login');
-
+        const hash = await bcrypt.hash(req.body.password, 10);
+        const query ='INSERT into users(username, password) values ($1, $2);';
+      db.any(query, [
+        req.body.username,
+        hash
+      ])
+      .then(()=> {
+        res.redirect('/login')
       })
-      .catch(err=>{
+      .catch(function(err) {
         console.log(err);
-        res.redirect("/register");
+        res.redirect('/register')
       });
     });
 
@@ -217,39 +214,29 @@ const dbConfig = {
     });
     
 
-    
+// Post Login    
     app.post('/login', async (req, res) => {
-        //the login goes here
-        const username = req.body.username;
-        const password = req.body.password;
-        const query = `select * from users where username = '${username}'`;
-        db.any(query)
-        .then(async data =>{
-        const match = await bcrypt.compare(password, data[0].password); 
+  const query = `SELECT * FROM users WHERE username='${req.body.username}';`;
+    db.any(query)
+    .then(async user => {
+        const match = await bcrypt.compare(req.body.password, user[0].password); //await is explained in #8
         if(match){
             req.session.user = {
                 api_key: process.env.API_KEY,
-                };
-                user.username = data[0].username;
-                req.session.save();
-                res.redirect('/home');
+              };
+              req.session.save();
+              res.redirect('/discover')
         }
         else{
-            res.render("pages/register",{
-                message: "Incorrect username or password",
-                error:true
-            })
-        }
-
-        })
-        .catch(err=>{
-            
-            res.render("pages/login",{
-                message: "Database Request Failed",
-                error:true
-            })
-        });
+          message.log ('Incorrect username or password.'); // message.ejs
+          res.redirect("/register", {error: 'Incorrect username or password.'})
+        }  
+    })
+    .catch(err=>{
+      console.log(err);
+      res.redirect('/login')
     });
+});
 
     // Authentication Middleware.
 // const auth = (req, res, next) => {
@@ -271,11 +258,8 @@ app.get("/logout", (req, res) => {
 });
 
 
-
-
-  
-
-
-
+ 
   app.listen(3000);
+
   console.log("Server is listening on port 3000");
+
