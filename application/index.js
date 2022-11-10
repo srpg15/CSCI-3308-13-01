@@ -35,6 +35,25 @@ const dbConfig = {
       console.log('ERROR:', error.message || error);
     });
 
+
+
+    const fetch_excercise_name = (query) => {
+      return new Promise((resolve, reject) => {
+
+        db.any(query)
+          .then(function(rows) {
+            const data = rows
+            resolve(data)
+          })
+          .catch(e => {
+            reject(e)
+          })
+      })
+    }
+  
+
+  
+
     app.set('view engine', 'ejs');
     app.use(bodyParser.json());
     app.use(
@@ -61,14 +80,21 @@ const dbConfig = {
       });
 
 
-      app.get('/home', (req, res) => {
-        res.render('pages/home');
+      app.get('/home', async (req, res) => {
+        fetch_excercise_name("SELECT exercise_name FROM exercises;")
+        .then(data => {
+          res.render('pages/home', {data: data});
+        })
+        .catch(e => {
+          console.log(e)
+        })
+        
       });
 
     app.get('/register', (req, res) => {
         res.render('pages/register');
       });
-
+    
 
 
     app.post('/register', async (req, res) => {
@@ -76,7 +102,7 @@ const dbConfig = {
         const username = req.body.username;
         const password = req.body.password;
         const hash = await bcrypt.hash(password, 10);
-        const query = 'insert into users (username, password) values ($1, $2) returning *';
+         const query = 'insert into users (username, password) values ($1, $2) returning *';
     db.any(query, [
       username,
       hash
@@ -236,13 +262,18 @@ const dbConfig = {
 //   // Authentication Required
 //   app.use(auth);
 
-
-app.get('/logout', (req, res) => {
+// GET /logout
+app.get("/logout", (req, res) => {
   req.session.destroy();
-    res.render('pages/login',{
-        message: "Logged out Successfully"
-    })
-  });
+  res.render("pages/login");
+  message.log ('Logged out Successfully');
+});
+
+
+
+  
+
+
 
   app.listen(3000);
   console.log("Server is listening on port 3000");
