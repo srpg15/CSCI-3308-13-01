@@ -112,7 +112,10 @@ const dbConfig = {
       })
       .catch(err=>{
         console.log(err);
-        res.redirect('/register')
+        res.render('pages/register',{
+          message: 'username already exists.',
+          error:true
+        });
       });
     });
 
