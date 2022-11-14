@@ -3,12 +3,13 @@
 <main>
 
     <main>
-        <div class="container">
+        <div class="container" >
           <!-- THE REST OF YOUR HTML CODE GOES HERE -->
           <h1><centre>Workouts for this Week</centre></h1>
-
-          
-          <select class="form-select" aria-label="Default select example">
+<table>
+<tr>
+            <td>
+              <select class="form-select" aria-label="Default select example">
             <option selected>Day</option>
             <option value="1">Monday</option>
             <option value="2">Tueday</option>
@@ -17,14 +18,20 @@
             <option value="6">Friday</option>
             <option value="7">Saturday</option>
           </select>
+          </td>
+          <td>
           <select class="form-select" aria-label="Default select example">
             <option selected>Select Exercise</option>
             <% data.forEach((name, index) => { %>
               <option value="<%=index %>" ><%-name.exercise_name%></option>
-           <% }) %>
-  
+           <% }) %>          
           </select>
-          <button type="button" class="btn btn-primary">Add</button>
+            </td>
+            <td>
+              <button type="submit" class="btn btn-primary"style="background:snow;color:grey;display:block; border-radius: 6px;font-size: 15px; width:80px">add</button>
+            </td>
+          </tr>
+</table>
   
 
           <table class="table">
@@ -89,7 +96,10 @@
               </tr>
             </tbody>
           </table>
-          <select class="form-select" aria-label="Default select example">
+          <table>
+            <tr>
+              <td>
+                <select class="form-select" aria-label="Default select example">
             <option selected>Day</option>
             <option value="1">Monday</option>
             <option value="2">Tueday</option>
@@ -98,13 +108,23 @@
             <option value="6">Friday</option>
             <option value="7">Saturday</option>
           </select>
-          <select class="form-select" aria-label="Default select example">
+              </td>
+            <td>
+              <select class="form-select" aria-label="Default select example">
             <option selected>Your Exercise</option>
             <option value="1">Database</option>
             <option value="2">Database</option>
             <option value="3">Database</option>
           </select>
-          <button type="button" class="btn btn-primary">Remove</button>
+            </td>
+          <td>
+            <button type="submit" class="btn btn-primary"style="background:snow;color:grey;display:block; border-radius: 6px;font-size: 15px; width:100px">remove</button>
+          </td>
+          
+            </tr>
+            
+          </table>
+          
             
 
         </div>
