@@ -37,8 +37,9 @@ const dbConfig = {
 
 
 
-    const fetch_excercise_name = (query) => {
+    const fetch_excersie_name = () => {
       return new Promise((resolve, reject) => {
+        let query = "SELECT exercise_name FROM exercises;";
 
         db.any(query)
           .then(function(rows) {
@@ -81,7 +82,7 @@ const dbConfig = {
 
 
       app.get('/home', async (req, res) => {
-        fetch_excercise_name("SELECT exercise_name FROM exercises;")
+        fetch_excersie_name()
         .then(data => {
           res.render('pages/home', {data: data});
         })
@@ -96,7 +97,7 @@ const dbConfig = {
       });
     
 
-    app.post('/register', async (req, res) => {
+      app.post('/register', async (req, res) => {
         //the logic goes here
         const username = req.body.username;
         const password = req.body.password;
@@ -108,7 +109,7 @@ const dbConfig = {
     ])
       .then(() =>{
        res.redirect('/login');
-    })
+      })
       .catch(err=>{
         console.log(err);
         res.redirect('/register')
@@ -213,33 +214,33 @@ const dbConfig = {
       });
     });
     
-  
-    app.post('/login', async (req, res) => {
-  //the login goes here
-        const username = req.body.username;
-        const password = req.body.password;
-        const query = `select * from users where username = '${username}'`;
-        db.any(query)
-        .then(async data =>{
-        const match = await bcrypt.compare(password, data[0].password);
-        if(match){
-            req.session.user = {
-                api_key: process.env.API_KEY,
-              };
-                user.username = data[0].username;
-                req.session.save();
-                res.redirect('/home');
-        }
-        else{
-          message.log ('Incorrect username or password.'); // message.ejs
-          res.redirect("/register", {error: 'Incorrect username or password.'})
-        }  
-    })
-    .catch(err=>{
-      console.log(err);
-      res.redirect('/login')
-    });
-});
+
+  app.post('/login', async (req, res) => {
+    //the login goes here
+          const username = req.body.username;
+          const password = req.body.password;
+          const query = `select * from users where username = '${username}'`;
+          db.any(query)
+          .then(async data =>{
+          const match = await bcrypt.compare(password, data[0].password);
+          if(match){
+              req.session.user = {
+                  api_key: process.env.API_KEY,
+                };
+                  user.username = data[0].username;
+                  req.session.save();
+                  res.redirect('/home');
+          }
+          else{
+            message.log ('Incorrect username or password.'); // message.ejs
+            res.redirect("/register", {error: 'Incorrect username or password.'})
+          }  
+      })
+      .catch(err=>{
+        console.log(err);
+        res.redirect('/login')
+      });
+  });
 
     // Authentication Middleware.
 // const auth = (req, res, next) => {
@@ -254,9 +255,9 @@ const dbConfig = {
 //   app.use(auth);
 
 // GET /logout
-app.get('/logout', (req, res) => {
+app.get("/logout", (req, res) => {
   req.session.destroy();
-  res.render('pages/login');
+  res.render("pages/login");
   message.log ('Logged out Successfully');
 });
 
