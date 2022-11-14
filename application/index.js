@@ -220,6 +220,7 @@ const dbConfig = {
           let username = req.body.username;
           let password = req.body.password;
           let query = `select * from users where username = '${username}'`;
+
           db.any(query)
           .then(async data =>{
           const match = await bcrypt.compare(password, data[0].password);
@@ -232,6 +233,7 @@ const dbConfig = {
                   res.redirect('/home');
           }
           else{
+
             res.render("pages/login", {
               message: 'Incorrect username or password.',
               error: true
