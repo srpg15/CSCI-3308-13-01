@@ -219,6 +219,8 @@ const dbConfig = {
     //the login goes here
           const username = req.body.username;
           const password = req.body.password;
+          const hash = await bcrypt.hash(password, 10);
+          console.log(hash);
           const query = `select * from users where username = '${username}'`;
           db.any(query)
           .then(async data =>{
@@ -232,8 +234,8 @@ const dbConfig = {
                   res.redirect('/home');
           }
           else{
-            message.log ('Incorrect username or password.'); // message.ejs
-            res.redirect("/register", {error: 'Incorrect username or password.'})
+            // message.log ('Incorrect username or password.'); // message.ejs
+            res.redirect("/register")
           }  
       })
       .catch(err=>{
@@ -266,4 +268,3 @@ app.get("/logout", (req, res) => {
   app.listen(3000);
 
   console.log("Server is listening on port 3000");
-
