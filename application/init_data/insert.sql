@@ -29,9 +29,9 @@ INSERT INTO exercises(exercise_id, exercise_name, reps, set_num, description, ca
     (18, 'Leg Extension', 12, 4, 'Leg extension using a machine. Isolates the quads.', 3),
     (19, 'Calf Raise', 12, 4, 'Using a machine or free weights, perform weighted calf raises with adequate weight for repetition amount', 3);
 INSERT INTO users(user_id, username, password) VALUES
-    (1, 'test', '$2b$10$92ATl9.9ZSgOsQR0GdC84eVZpOsS6rZxzY3H4g40WjX5.P1Myf7FS'),
+    (1, 'test', '$2b$10$h/rTD6Ge4XmSlKlB0Trm0OGJYuumvznEdlOE/Vdas23.V0xPTWr42'),
     (2, 'cubuff', '$2b$10$92ATl9.9ZSgOsQR0GdC84eVZpOsS6rZxzY3H4g40WjX5.P1Myf7FS'),
-    (3, 'ralphie', '$2b$10$92ATl9.9ZSgOsQR0GdC84eVZpOsS6rZxzY3H4g40WjX5.P1Myf7FS');
+    (3, 'ralphie', '$2b$10$Qy3CZQFohBwBdFx8jdihue2g7oDSf/CLvZKuTTZ5q87srto/bPg8G');
 INSERT INTO users_to_exercises(day_id, day_name, user_id, exercise_id) VALUES
     (1, 'Sunday', 1, 4),
     (1, 'Sunday', 1, 11),
