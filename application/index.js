@@ -72,7 +72,7 @@ const dbConfig = {
       );
 
       app.get('/', (req, res) =>{
-        res.redirect('/register'); 
+        res.redirect('/login'); 
       });
 
     
@@ -112,7 +112,10 @@ const dbConfig = {
       })
       .catch(err=>{
         console.log(err);
-        res.redirect('/register')
+        res.render('pages/register',{
+          message: 'username already exists.',
+          error:true
+        });
       });
     });
 
@@ -217,11 +220,10 @@ const dbConfig = {
 
   app.post('/login', async (req, res) => {
     //the login goes here
-          const username = req.body.username;
-          const password = req.body.password;
-          const hash = await bcrypt.hash(password, 10);
-          console.log(hash);
-          const query = `select * from users where username = '${username}'`;
+          let username = req.body.username;
+          let password = req.body.password;
+          let query = `select * from users where username = '${username}'`;
+
           db.any(query)
           .then(async data =>{
           const match = await bcrypt.compare(password, data[0].password);
@@ -234,13 +236,18 @@ const dbConfig = {
                   res.redirect('/home');
           }
           else{
-            // message.log ('Incorrect username or password.'); // message.ejs
-            res.redirect("/register")
+
+            res.render("pages/login", {
+              message: 'Incorrect username or password.',
+              error: true
+            });
           }  
       })
       .catch(err=>{
-        console.log(err);
-        res.redirect('/login')
+        res.render('pages/register', {
+          message: 'account is not found, register here',
+          error: true
+        });
       });
   });
 
@@ -260,7 +267,7 @@ const dbConfig = {
 app.get("/logout", (req, res) => {
   req.session.destroy();
   res.render("pages/login");
-  // message.log ('Logged out Successfully');
+  message.log ('Logged out Successfully');
 });
 
 
