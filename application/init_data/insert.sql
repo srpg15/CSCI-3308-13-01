@@ -27,7 +27,8 @@ INSERT INTO exercises(exercise_id, exercise_name, reps, set_num, description, ca
     (16, 'Cable Fly', 8, 5, 'Using a fly machine standing or dumbbells on a flat bench, start with your arms wide at your sides then bring forwards until hands cross or dumbbells touch.', 1),
     (17, 'Leg Curl', 8, 4, 'A typical leg curl using a machine. Works the back of the leg.', 3),
     (18, 'Leg Extension', 12, 4, 'Leg extension using a machine. Isolates the quads.', 3),
-    (19, 'Calf Raise', 12, 4, 'Using a machine or free weights, perform weighted calf raises with adequate weight for repetition amount', 3);
+    (19, 'REST DAY', 0, 0, 'Recovery.', 0),
+    (20, 'Calf Raise', 12, 4, 'Using a machine or free weights, perform weighted calf raises with adequate weight for repetition amount', 3);
 INSERT INTO users(user_id, username, password) VALUES
     (1, 'test', '$2b$10$92ATl9.9ZSgOsQR0GdC84eVZpOsS6rZxzY3H4g40WjX5.P1Myf7FS'),
     (2, 'cubuff', '$2b$10$92ATl9.9ZSgOsQR0GdC84eVZpOsS6rZxzY3H4g40WjX5.P1Myf7FS'),

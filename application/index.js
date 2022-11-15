@@ -6,6 +6,7 @@ const session = require('express-session');
 const bcrypt = require('bcrypt');
 const axios = require('axios');
 const { render } = require('ejs');
+const { queryResult } = require('pg-promise');
 
 // database configuration
 const dbConfig = {
@@ -37,10 +38,9 @@ const dbConfig = {
 
 
 
-    const fetch_excersie_name = () => {
+    const fetch_database = (query) => {
       return new Promise((resolve, reject) => {
-        let query = "SELECT exercise_name FROM exercises;";
-
+      
         db.any(query)
           .then(function(rows) {
             const data = rows
@@ -81,16 +81,6 @@ const dbConfig = {
       });
 
 
-      app.get('/home', async (req, res) => {
-        fetch_excersie_name()
-        .then(data => {
-          res.render('pages/home', {data: data});
-        })
-        .catch(e => {
-          console.log(e)
-        })
-        
-      });
 
     app.get('/register', (req, res) => {
         res.render('pages/register');
@@ -265,6 +255,26 @@ const dbConfig = {
 //   app.use(auth);
 
 // GET /logout
+
+app.get('/home', async (req, res) => {
+
+   query1 = "SELECT exercise_name FROM exercises;"
+   query2 = "SELECT exercise_name FROM exercises INNER JOIN users_to_exercises ON exercises.exercise_id = users_to_exercises.exercise_id;"
+   await fetch_database("SELECT exercise_name FROM exercises;")
+   query1Result = data
+  .then(data => {
+    query1Result = data
+    res.render('pages/home', {data: query1Result});
+  })
+  .catch(e => {
+    console.log(e)
+  })
+
+  
+});
+
+
+
 app.get("/logout", (req, res) => {
   req.session.destroy();
   res.render("pages/login");
