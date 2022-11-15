@@ -97,26 +97,16 @@ const dbConfig = {
       });
     
 
-      app.post('/register', async (req, res) => {
-        //the logic goes here
-        const username = req.body.username;
-        const password = req.body.password;
-        const hash = await bcrypt.hash(password, 10);
-        const query = 'insert into users (username, password) values ($1, $2) returning *';
-    db.any(query, [
-      username,
-      hash
-    ])
-      .then(() =>{
-       res.redirect('/login');
-      })
-      .catch(err=>{
-        console.log(err);
-        res.render('pages/register',{
-          message: 'username already exists.',
-          error:true
+      app.post('/register', async (req, res)=>{
+        const hash = await bcrypt.hash(req.body.password, 10);
+        let INSERT = `INSERT INTO users (username,password) VALUES ('${req.body.username}','${hash}')`;
+        db.query(INSERT)
+        .then(query =>{
+          res.redirect('/login');
+        })
+        .catch((err) =>{
+          res.render('pages/register',{error: true, message: 'username alredy used'});
         });
-      });
     });
 
     app.get('/profile', (req, res) =>{
@@ -126,11 +116,11 @@ const dbConfig = {
     app.post('/profile/Change-username', async (req, res) =>{
       let old_username = req.body.Old_Username;
       let new_username = req.body.new_username;
-      let query = `select * from users where users.username = '${user.username}'`;
+      let query = `select * from users where users.user_id = '${user.user_id}'`;
       await db.query(query)
       .then(async data =>{
         if(old_username === user.username){
-          let modify = `update users set username = '${new_username}' where username = '${user.username}';`;
+          let modify = `update users set username = '${new_username}' where user_id = '${user.user_id}';`;
           db.query(modify)
             .then( message =>{
               user.username = new_username;
@@ -168,7 +158,7 @@ const dbConfig = {
       let old_passord = req.body.Old_Password;
       let new_password = req.body.new_Password;
       let check_new_password = req.body.Re_Enter_Password;
-      let query = `select * from users where users.username = '${user.username}'`;
+      let query = `select * from users where users.user_id = '${user.user_id}'`;
       await db.query(query)
       .then(async data =>{
         const match = await bcrypt.compare(old_passord, data[0].password);
@@ -176,7 +166,7 @@ const dbConfig = {
           if(new_password === check_new_password && new_password!= ''){
             // 
             const hash = await bcrypt.hash(new_password, 10);
-            let modify = `update users set password = '${hash}' where username = '${user.username}';`;
+            let modify = `update users set password = '${hash}' where user_id = '${user.user_id}';`;
             db.query(modify)
             .then( message =>{
               res.render('pages/profile',{
@@ -224,7 +214,7 @@ const dbConfig = {
           let password = req.body.password;
           let query = `select * from users where username = '${username}'`;
 
-          db.any(query)
+          await db.any(query)
           .then(async data =>{
           const match = await bcrypt.compare(password, data[0].password);
           if(match){
@@ -232,6 +222,8 @@ const dbConfig = {
                   api_key: process.env.API_KEY,
                 };
                   user.username = data[0].username;
+                  user.user_id = data[0].user_id;
+                  console.log(user.user_id);
                   req.session.save();
                   res.redirect('/home');
           }
