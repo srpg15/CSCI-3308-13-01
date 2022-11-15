@@ -2,14 +2,14 @@
 -- User creds table 
 -- Each user gets a unique user_id that ties their account to their individual routines
 CREATE TABLE users(
-    user_id SERIAL PRIMARY KEY,
+    user_id INT SERIAL PRIMARY KEY AUTO_INCREMENT NOT NULL,
     username VARCHAR(50) NOT NULL,
     password CHAR(60) NOT NULL
 );
 -- Database of each individual exercise stored by the site
 -- User modifiable through alter table onclick events
 CREATE TABLE exercises(
-    exercise_id SERIAL PRIMARY KEY, 
+    exercise_id INT SERIAL PRIMARY KEY AUTO_INCREMENT NOT NULL, 
     exercise_name VARCHAR(50),
     reps INT,
     set_num INT,
