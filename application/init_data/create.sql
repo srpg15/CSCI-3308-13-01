@@ -20,7 +20,6 @@ CREATE TABLE exercises(
 -- Day_id and day_name are used to outline the week plan 
 -- Must have duplicates for each day (eg: If I do barbell bench on tuesday and friday there will be 2 entries with differing day_id and day_name)
 CREATE TABLE users_to_exercises(
-    day_id INT,
     day_name VARCHAR(50),
     user_id INT,
     CONSTRAINT user_id FOREIGN KEY (user_id)

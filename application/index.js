@@ -50,7 +50,7 @@ const dbConfig = {
             reject(e)
           })
       })
-    }
+    };
   
 
   
@@ -258,19 +258,35 @@ const dbConfig = {
 
 app.get('/home', async (req, res) => {
 
-   query1 = "SELECT exercise_name FROM exercises;"
-   query2 = "SELECT exercise_name FROM exercises INNER JOIN users_to_exercises ON exercises.exercise_id = users_to_exercises.exercise_id;"
-   await fetch_database("SELECT exercise_name FROM exercises;")
-   query1Result = data
-  .then(data => {
-    query1Result = data
-    res.render('pages/home', {data: query1Result});
+   query1 = "SELECT * FROM exercises;";
+   query2 = "SELECT exercise_name FROM exercises INNER JOIN users_to_exercises ON exercises.exercise_id = users_to_exercises.exercise_id;";
+   db.query(query1)
+  .then(exercises => {
+    res.render('pages/home', {exercises});
   })
   .catch(e => {
     console.log(e)
   })
 
   
+});
+
+app.post('/home/add', (req, res)=>{
+  let exercise_id = req.body.exercise_id;
+  let day_name = req.body.day_name;
+  let query = `INSERT INTO users_to_exercises(day_name, user_id, exercise_id) VALUES($1, $2, $3);`;
+  db.query(query, [day_name, user.user_id, exercise_id])
+  .then(()=>{
+    console.log('proof');
+    res.redirect('/home');
+  })
+  .catch((err)=>{
+    res.render('pages/home', {
+      message: `couldn't add the exercise.`,
+      error: true
+    });
+  });
+
 });
 
 
