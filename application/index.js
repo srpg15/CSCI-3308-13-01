@@ -97,26 +97,16 @@ const dbConfig = {
       });
     
 
-      app.post('/register', async (req, res) => {
-        //the logic goes here
-        const username = req.body.username;
-        const password = req.body.password;
-        const hash = await bcrypt.hash(password, 10);
-        const query = 'insert into users (username, password) values ($1, $2) returning *';
-    db.any(query, [
-      username,
-      hash
-    ])
-      .then(() =>{
-       res.redirect('/login');
-      })
-      .catch(err=>{
-        console.log(err);
-        res.render('pages/register',{
-          message: 'username already exists.',
-          error:true
+      app.post('/register', async (req, res)=>{
+        const hash = await bcrypt.hash(req.body.password, 10);
+        let INSERT = `INSERT INTO users (username,password) VALUES ('${req.body.username}','${hash}')`;
+        db.query(INSERT)
+        .then(query =>{
+          res.redirect('/login');
+        })
+        .catch((err) =>{
+          res.render('pages/register',{error: true, message: 'username alredy used'});
         });
-      });
     });
 
     app.get('/profile', (req, res) =>{
@@ -224,7 +214,7 @@ const dbConfig = {
           let password = req.body.password;
           let query = `select * from users where username = '${username}'`;
 
-          db.any(query)
+          await db.any(query)
           .then(async data =>{
           const match = await bcrypt.compare(password, data[0].password);
           if(match){
@@ -233,6 +223,7 @@ const dbConfig = {
                 };
                   user.username = data[0].username;
                   user.user_id = data[0].user_id;
+                  console.log(user.user_id);
                   req.session.save();
                   res.redirect('/home');
           }
