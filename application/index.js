@@ -258,8 +258,7 @@ const dbConfig = {
 // GET /logout
 app.get("/logout", (req, res) => {
   req.session.destroy();
-  res.render("pages/login");
-  message.log ('Logged out Successfully');
+  res.redirect("/login");
 });
 
 
