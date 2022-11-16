@@ -22,6 +22,7 @@ const dbConfig = {
     user_id: undefined,
     username: undefined,
   };
+  
   const db = pgp(dbConfig);
 
 
@@ -295,7 +296,8 @@ app.post('/home/add', (req, res)=>{
   let day_name = req.body.day_name;
   let query = `INSERT INTO users_to_exercises(day_name, user_id, exercise_id) VALUES($1, $2, $3);`;
   db.query(query, [day_name, user.user_id, exercise_id])
-  .then((test)=>{
+  .then(()=>{
+    console.log('proof');
     res.redirect('/home');
   })
   .catch((err)=>{
