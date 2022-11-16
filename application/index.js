@@ -117,37 +117,37 @@ const dbConfig = {
     });
 
     app.get('/profile', (req, res) =>{
-      res.render('pages/Profile',{username: user.username});
+      res.render('pages/Profile',{username: req.session.user.username});
     });
 
     app.post('/profile/Change-username', async (req, res) =>{
       let old_username = req.body.Old_Username;
       let new_username = req.body.new_username;
-      let query = `select * from users where users.user_id = '${user.user_id}'`;
+      let query = `select * from users where users.user_id = '${req.session.user.user_id}'`;
       await db.query(query)
       .then(async data =>{
-        if(old_username === user.username){
-          let modify = `update users set username = '${new_username}' where user_id = '${user.user_id}';`;
+        if(old_username === req.session.user.username){
+          let modify = `update users set username = '${new_username}' where user_id = '${req.session.user.user_id}';`;
           db.query(modify)
             .then( message =>{
-              user.username = new_username;
+              req.session.user.username = new_username;
               res.render('pages/profile',{
                 message: "Username updated successfully",
-                username: user.username
+                username: req.session.user.username
               });
 
             })
             .catch(err=>{
               res.render('pages/profile',{
                 message: "couldn't update the Username",
-                username: user.username,
+                username: req.session.user.username,
                 error:true
               });
             });
         }else{
           res.render('pages/profile',{
             message: "Usernames doesn't match",
-            username: user.username,
+            username: req.session.user.username,
             error:true
           });
         }
@@ -155,7 +155,7 @@ const dbConfig = {
       .catch(err =>{
         res.render('pages/profile',{
           message: "couldn't update the Username",
-          username: user.username,
+          username: req.session.user.username,
           error:true
         });
       });
@@ -165,7 +165,7 @@ const dbConfig = {
       let old_passord = req.body.Old_Password;
       let new_password = req.body.new_Password;
       let check_new_password = req.body.Re_Enter_Password;
-      let query = `select * from users where users.user_id = '${user.user_id}'`;
+      let query = `select * from users where users.user_id = '${req.session.user.user_id}'`;
       await db.query(query)
       .then(async data =>{
         const match = await bcrypt.compare(old_passord, data[0].password);
@@ -173,19 +173,19 @@ const dbConfig = {
           if(new_password === check_new_password && new_password!= ''){
             // 
             const hash = await bcrypt.hash(new_password, 10);
-            let modify = `update users set password = '${hash}' where user_id = '${user.user_id}';`;
+            let modify = `update users set password = '${hash}' where user_id = '${req.session.user.user_id}';`;
             db.query(modify)
             .then( message =>{
               res.render('pages/profile',{
                 message: "password updated successfully",
-                username: user.username
+                username: req.session.user.username
               });
 
             })
             .catch(err=>{
               res.render('pages/profile',{
                 message: "couldn't update the password",
-                username: user.username,
+                username: req.session.user.username,
                 error:true
               });
             });
@@ -193,14 +193,14 @@ const dbConfig = {
           }else{
             res.render('pages/profile',{
             message: "the passwords you entered doesn't match ",
-            username: user.username,
+            username: req.session.user.username,
             error:true
           });
           }
         }else{
           res.render('pages/profile',{
             message: "incorrect password",
-            username: user.username,
+            username: req.session.user.username,
             error:true
           });
         }
@@ -208,7 +208,7 @@ const dbConfig = {
       .catch(err=>{
         res.render('pages/profile',{
           message: "couldn't update the password",
-          username: user.username,
+          username: req.session.user.username,
           error:true
         });
       });
@@ -264,12 +264,12 @@ const dbConfig = {
 // GET /logout
 
 app.get('/home', auth, async (req, res) => {
-  const {user_id} = req.session.user || {}
-  console.log(req.session.user)
-  console.log(user_id)
+  const {user_id} = req.session.user || {};
+  console.log(req.session.user);
+  console.log(user_id);
 
-  query1 = "SELECT exercise_name FROM exercises;"
-  query2 = `SELECT exercise_name FROM exercises INNER JOIN users_to_exercises ON exercises.exercise_id = users_to_exercises.exercise_id WHERE user_id = ${user_id};`
+  query1 = "SELECT * FROM exercises;"
+  query2 = `SELECT * FROM exercises INNER JOIN users_to_exercises ON exercises.exercise_id = users_to_exercises.exercise_id WHERE user_id = ${user_id};`;
   
   fetch_database(query1)
   .then(Exe => {
@@ -279,11 +279,11 @@ app.get('/home', auth, async (req, res) => {
       res.render('pages/home', {data: Exe, user: name});
     })
     .catch(e => {
-      console.log(e)
+      console.log(e);
     })
   })
   .catch(e => {
-    console.log(e)
+    console.log(e);
   })
 
  
@@ -295,9 +295,8 @@ app.post('/home/add', (req, res)=>{
   let exercise_id = req.body.exercise_id;
   let day_name = req.body.day_name;
   let query = `INSERT INTO users_to_exercises(day_name, user_id, exercise_id) VALUES($1, $2, $3);`;
-  db.query(query, [day_name, user.user_id, exercise_id])
+  db.query(query, [day_name, req.session.user.user_id, exercise_id])
   .then(()=>{
-    console.log('proof');
     res.redirect('/home');
   })
   .catch((err)=>{
@@ -309,7 +308,29 @@ app.post('/home/add', (req, res)=>{
 
 });
 
-
+app.post('/home/delete', (req, res) => {
+  let exercise_id = req.body.ExerciseId;
+  let day_name = req.body.dayName;
+  let query = `SELECT * FROM users_to_exercises where users_to_exercises.user_id = $1 AND users_to_exercises.exercise_id = $2 AND users_to_exercises.day_name = $3;`;
+  db.query(query,[req.session.user.user_id, exercise_id, day_name])
+  .then(()=> {
+    let Delete = 
+    `DELETE FROM users_to_exercises
+     WHERE users_to_exercises.user_id = '${req.session.user.user_id}' 
+     AND users_to_exercises.exercise_id = '${exercise_id}' 
+     AND users_to_exercises.day_name = '${day_name}';`;
+    db.query(Delete)
+    .then(()=>{
+      res.redirect('/home');
+    })
+    .catch((err)=>{
+      console.log(err);
+    });
+  })
+  .catch((err)=>{
+    res.redirect('/home');
+  });
+});
 
 app.get("/logout", (req, res) => {
   req.session.destroy();

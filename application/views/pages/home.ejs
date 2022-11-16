@@ -9,6 +9,7 @@
           <h1><centre>Workouts for this Week</centre></h1>
 <table>
 <tr>
+        <form action="/home/add" method="post">
             <td>
               <select name="day_name" class="form-select" aria-label="Default select example" required>
             <option selected>Day</option>
@@ -21,9 +22,8 @@
             <option value="Saturday">Saturday</option>
           </select>
           </td>
-          <form action="/home/add" method="post">
           <td>
-          <select class="form-select" aria-label="Default select example" required>
+          <select name = 'exercise_id' class="form-select" aria-label="Default select example" required>
             <option selected>Select Exercise</option>
             <% data.forEach((exercise) => { %>
               <option value='<%- exercise.exercise_id %>' ><%- exercise.exercise_name %></option>
@@ -102,29 +102,31 @@
           </table>
           <table>
             <tr>
+          <form action="/home/delete" method="post">
               <td>
-                <select class="form-select" aria-label="Default select example">
+          <select name="dayName" class="form-select" aria-label="Default select example" required>
             <option selected>Day</option>
-            <option value="1">Monday</option>
-            <option value="2">Tueday</option>
-            <option value="3">Wednesday</option>
-            <option value="4">Thurday</option>
-            <option value="6">Friday</option>
-            <option value="7">Saturday</option>
+            <option value="Sunday">Sunday</option>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
           </select>
               </td>
             <td>
-              <select class="form-select" aria-label="Default select example">
+              <select name="ExerciseId" class="form-select" aria-label="Default select example" required>
             <option selected>Your Exercise</option>
             <<% user.forEach((exercise) => { %>
-              <option value='<%- exercise.exercise_name %>' ><%- exercise.exercise_name %></option>
+              <option value='<%- exercise.exercise_id %>' ><%- exercise.exercise_name %></option>
            <% }) %>     
           </select>
             </td>
           <td>
             <button type="submit" class="btn btn-primary"style="background:snow;color:grey;display:block; border-radius: 6px;font-size: 15px; width:100px">remove</button>
           </td>
-          
+          </form>
             </tr>
             
           </table>
