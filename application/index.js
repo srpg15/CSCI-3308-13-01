@@ -44,6 +44,7 @@ const dbConfig = {
         db.any(query)
           .then(function(rows) {
             const data = rows
+            //console.log(data);
             resolve(data)
           })
           .catch(e => {
@@ -260,13 +261,21 @@ app.get('/home', auth, async (req, res) => {
 
   query1 = "SELECT * FROM exercises;"
   query2 = `SELECT * FROM exercises INNER JOIN users_to_exercises ON exercises.exercise_id = users_to_exercises.exercise_id WHERE user_id = ${user_id};`;
+  query3 = `SELECT * FROM users_to_exercises WHERE user_id = ${user_id};`;
   
   fetch_database(query1)
   .then(Exe => {
 
     fetch_database(query2)
     .then(name => {
-      res.render('pages/home', {data: Exe, user: name});
+      
+      fetch_database(query3)
+        .then(days => {
+          res.render('pages/home', {data: Exe, user: name, day: days});
+        })
+        .catch(e => {
+          console.log(e); 
+        })
     })
     .catch(e => {
       console.log(e);
