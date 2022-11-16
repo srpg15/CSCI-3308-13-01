@@ -50,53 +50,123 @@
             </thead>
             <tbody>
               <tr>
-                <th scope="row">Monday</th>
-                <td>Database...</td>
-                <td>Database...</td>
-                <td>Database...</td>
-                <td>Database...</td>
+                <% day.forEach((dayVal) => { %>
+                  <% if (dayVal.day_name === 'Monday') { %>
+                     <% user.forEach((workout) => { %>
+                        <% if (workout.exercise_id === dayVal.exercise_id) { %>
+                          <tr>
+                          <th scope="row">Monday</th>
+                          <td> <%- workout.exercise_name %></td>
+                          <td> <%- workout.reps %></td>
+                          <td> <%- workout.set_num %></td>
+                          <td> <%- workout.description %></td>
+                        </tr>
+                        <% } %>
+                      <% }); %>
+                  <% } %>
+                <% }); %>
               </tr>
               <tr>
-                <th scope="row">Tueday</th>
-                <td>Database...</td>
-                <td>Database...</td>
-                <td>Database...</td>
-                <td>Database...</td>
+                <% day.forEach((dayVal) => { %>
+                  <% if (dayVal.day_name === 'Tuesday') { %>
+                     <% user.forEach((workout) => { %>
+                        <% if (workout.exercise_id === dayVal.exercise_id) { %>
+                          <tr>
+                            <th scope="row">Tuesday</th>
+                            <td> <%- workout.exercise_name %></td>
+                            <td> <%- workout.reps %></td>
+                            <td> <%- workout.set_num %></td>
+                            <td> <%- workout.description %></td>
+                          </tr>
+                        <% } %>
+                      <% }); %>
+                  <% } %>
+                <% }); %>
               </tr>
               <tr>
-                <th scope="row">Wednesday</th>
-                <td> Database...</td>
-                <td> Database...</td>
-                <td>Database...</td>
-                <td>Database...</td>
+                <% day.forEach((dayVal) => { %>
+                  <% if (dayVal.day_name === 'Wednesday') { %>
+                     <% user.forEach((workout) => { %>
+                        <% if (workout.exercise_id === dayVal.exercise_id) { %>
+                          <tr>
+                            <th scope="row">Wednesday</th>
+                            <td> <%- workout.exercise_name %></td>
+                            <td> <%- workout.reps %></td>
+                            <td> <%- workout.set_num %></td>
+                            <td> <%- workout.description %></td>
+                          </tr>
+                        <% } %>
+                      <% }); %>
+                  <% } %>
+                <% }); %>
               </tr>
               <tr>
-                <th scope="row">Thurday</th>
-                <td> Database...</td>
-                <td> Database...</td>
-                <td>Database...</td>
-                <td>Database...</td>
+                <% day.forEach((dayVal) => { %>
+                  <% if (dayVal.day_name === 'Thursday') { %>
+                     <% user.forEach((workout) => { %>
+                        <% if (workout.exercise_id === dayVal.exercise_id) { %>
+                          <tr>
+                            <th scope="row">Thursday</th>
+                            <td> <%- workout.exercise_name %></td>
+                            <td> <%- workout.reps %></td>
+                            <td> <%- workout.set_num %></td>
+                            <td> <%- workout.description %></td>
+                          </tr>
+                        <% } %>
+                      <% }); %>
+                  <% } %>
+                <% }); %>
               </tr>
               <tr>
-                <th scope="row">Friday</th>
-                <td> Database...</td>
-                <td> Database...</td>
-                <td>Database...</td>
-                <td>Database...</td>
+                <% day.forEach((dayVal) => { %>
+                  <% if (dayVal.day_name === 'Friday') { %>
+                     <% user.forEach((workout) => { %>
+                        <% if (workout.exercise_id === dayVal.exercise_id) { %>
+                          <tr>
+                            <th scope="row">Friday</th>
+                            <td> <%- workout.exercise_name %></td>
+                            <td> <%- workout.reps %></td>
+                            <td> <%- workout.set_num %></td>
+                            <td> <%- workout.description %></td>
+                          </tr>
+                        <% } %>
+                      <% }); %>
+                  <% } %>
+                <% }); %>
               </tr>
               <tr>
-                <th scope="row">Saturday</th>
-                <td> Database...</td>
-                <td> Database...</td>
-                <td>Database...</td>
-                <td>Database...</td>
+                <% day.forEach((dayVal) => { %>
+                  <% if (dayVal.day_name === 'Saturday') { %>
+                     <% user.forEach((workout) => { %>
+                        <% if (workout.exercise_id === dayVal.exercise_id) { %>
+                          <tr>
+                            <th scope="row">Saturday</th>
+                            <td> <%- workout.exercise_name %></td>
+                            <td> <%- workout.reps %></td>
+                            <td> <%- workout.set_num %></td>
+                            <td> <%- workout.description %></td>
+                          </tr>
+                        <% } %>
+                      <% }); %>
+                  <% } %>
+                <% }); %>
               </tr>
               <tr>
-                <th scope="row">Sunday</th>
-                <td> Database...</td>
-                <td> Database...</td>
-                <td>Database...</td>
-                <td>Database...</td>
+                <% day.forEach((dayVal) => { %>
+                  <% if (dayVal.day_name === 'Sunday') { %>
+                     <% user.forEach((workout) => { %>
+                        <% if (workout.exercise_id === dayVal.exercise_id) { %>
+                          <tr>
+                            <th scope="row">Sunday</th>
+                            <td> <%- workout.exercise_name %></td>
+                            <td> <%- workout.reps %></td>
+                            <td> <%- workout.set_num %></td>
+                            <td> <%- workout.description %></td>
+                          </tr>
+                        <% } %>
+                      <% }); %>
+                  <% } %>
+                <% }); %>
               </tr>
             </tbody>
           </table>
