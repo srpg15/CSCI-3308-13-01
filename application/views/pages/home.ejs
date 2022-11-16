@@ -9,24 +9,24 @@
           <h1><centre>Workouts for this Week</centre></h1>
 <table>
 <tr>
-            <td>
-              <select name="day_name" class="form-select" aria-label="Default select example" required>
+          <td>
+          <form action="/home/add" method="post"></form>
+          <select name = 'day_name' class="form-select" aria-label="Default select example" required>
             <option selected>Day</option>
-            <option value="Sunday">Sunday</option>
-            <option value="Monday">Monday</option>
-            <option value="Tuesday">Tuesday</option>
-            <option value="Wednesday">Wednesday</option>
-            <option value="Thursday">Thursday</option>
-            <option value="Friday">Friday</option>
-            <option value="Saturday">Saturday</option>
+            <option value='Sunday'>Sunday</option>
+            <option value='Monday'>Monday</option>
+            <option value='Tuesday'>Tuesday</option>
+            <option value='Wednesday'>Wednesday</option>
+            <option value='Thursday'>Thursday</option>
+            <option value='Friday'>Friday</option>
+            <option value='Saturday'>Saturday</option>
           </select>
           </td>
-          <form action="/home/add" method="post">
           <td>
-          <select class="form-select" aria-label="Default select example" required>
+          <select name = 'exercise_id' class="form-select" aria-label="Default select example" required>
             <option selected>Select Exercise</option>
             <% exercises.forEach((exercise) => { %>
-              <option value='<%- exercise.exercise_id %>' ><%- exercise.exercise_name %></option>
+              <option value='<%= exercise.exercise_id %>' ><%= exercise.exercise_name %></option>
            <% }) %>          
           </select>
             </td>
