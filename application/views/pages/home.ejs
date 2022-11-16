@@ -1,35 +1,39 @@
-<%- include ('../partials/header') %>
+<<%- include ('../partials/header') %>
 <%- include ('../pages/menu_navbar') %>
 <main>
 
     <main>
         <div class="container" >
           <!-- THE REST OF YOUR HTML CODE GOES HERE -->
+          <div class="col"><%- include ('../partials/message') %></div>
           <h1><centre>Workouts for this Week</centre></h1>
 <table>
 <tr>
+        <form action="/home/add" method="post">
             <td>
-              <select class="form-select" aria-label="Default select example">
+              <select name="day_name" class="form-select" aria-label="Default select example" required>
             <option selected>Day</option>
-            <option value="1">Monday</option>
-            <option value="2">Tueday</option>
-            <option value="3">Wednesday</option>
-            <option value="4">Thurday</option>
-            <option value="6">Friday</option>
-            <option value="7">Saturday</option>
+            <option value="Sunday">Sunday</option>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
           </select>
           </td>
           <td>
-          <select class="form-select" aria-label="Default select example">
+          <select name = 'exercise_id' class="form-select" aria-label="Default select example" required>
             <option selected>Select Exercise</option>
-            <% data.forEach((name, index) => { %>
-              <option value="<%=index %>" ><%-name.exercise_name%></option>
+            <% data.forEach((exercise) => { %>
+              <option value='<%- exercise.exercise_id %>' ><%- exercise.exercise_name %></option>
            <% }) %>          
           </select>
             </td>
             <td>
               <button type="submit" class="btn btn-primary"style="background-color:#d4e7fc;color:#3c3c3c;display:block; border-radius: 6px;font-size: 15px; width:80px">add</button>
             </td>
+          </form>
           </tr>
 </table>
   
@@ -98,36 +102,38 @@
           </table>
           <table>
             <tr>
+          <form action="/home/delete" method="post">
               <td>
-                <select class="form-select" aria-label="Default select example">
+          <select name="dayName" class="form-select" aria-label="Default select example" required>
             <option selected>Day</option>
-            <option value="1">Monday</option>
-            <option value="2">Tueday</option>
-            <option value="3">Wednesday</option>
-            <option value="4">Thurday</option>
-            <option value="6">Friday</option>
-            <option value="7">Saturday</option>
+            <option value="Sunday">Sunday</option>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
           </select>
               </td>
             <td>
-              <select class="form-select" aria-label="Default select example">
+              <select name="ExerciseId" class="form-select" aria-label="Default select example" required>
             <option selected>Your Exercise</option>
-            <option value="1">Database</option>
-            <option value="2">Database</option>
-            <option value="3">Database</option>
+            <<% user.forEach((exercise) => { %>
+              <option value='<%- exercise.exercise_id %>' ><%- exercise.exercise_name %></option>
+           <% }) %>     
           </select>
             </td>
           <td>
             <button type="submit" class="btn btn-primary"style="background-color:#d4e7fc;color:#3c3c3c;display:block; border-radius: 6px;font-size: 15px; width:100px">remove</button>
           </td>
-          
+          </form>
             </tr>
             
           </table>
           
-            
-
+           
         </div>
+
       </main>
 
 </main>
