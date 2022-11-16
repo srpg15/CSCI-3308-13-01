@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require('express')
 const app = express();
 const pgp = require('pg-promise')();
 const bodyParser = require('body-parser');
@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt');
 const axios = require('axios');
 const { render } = require('ejs');
 const { queryResult } = require('pg-promise');
-
+const path = require('path')
 // database configuration
 const dbConfig = {
     host: 'db',
@@ -56,6 +56,7 @@ const dbConfig = {
   
 
     app.set('view engine', 'ejs');
+    app.use(express.static(path.join(__dirname, "src")));
     app.use(bodyParser.json());
     app.use(
         session({
@@ -85,6 +86,12 @@ const dbConfig = {
     app.get('/register', (req, res) => {
         res.render('pages/register');
       });
+
+
+    const auth = (req, res, next) => {
+      if(!req.session.user) res.render('pages/login')
+      else next()
+    }
     
 
       app.post('/register', async (req, res) => {
@@ -220,9 +227,9 @@ const dbConfig = {
           if(match){
               req.session.user = {
                   api_key: process.env.API_KEY,
+                  username: data[0].username,
+                  user_id: data[0].user_id,
                 };
-                  user.username = data[0].username;
-                  user.user_id = data[0].user_id;
                   req.session.save();
                   res.redirect('/home');
           }
@@ -256,20 +263,33 @@ const dbConfig = {
 
 // GET /logout
 
-app.get('/home', async (req, res) => {
+app.get('/home', auth, async (req, res) => {
+  const {user_id} = req.session.user || {}
+  console.log(req.session.user)
+  console.log(user_id)
 
-   query1 = "SELECT * FROM exercises;";
-   query2 = "SELECT exercise_name FROM exercises INNER JOIN users_to_exercises ON exercises.exercise_id = users_to_exercises.exercise_id;";
-   db.query(query1)
-  .then(exercises => {
-    res.render('pages/home', {exercises});
+  query1 = "SELECT exercise_name FROM exercises;"
+  query2 = `SELECT exercise_name FROM exercises INNER JOIN users_to_exercises ON exercises.exercise_id = users_to_exercises.exercise_id WHERE user_id = ${user_id};`
+  
+  fetch_database(query1)
+  .then(Exe => {
+
+    fetch_database(query2)
+    .then(name => {
+      res.render('pages/home', {data: Exe, user: name});
+    })
+    .catch(e => {
+      console.log(e)
+    })
   })
   .catch(e => {
     console.log(e)
   })
 
-  
+ 
 });
+
+  
 
 app.post('/home/add', (req, res)=>{
   let exercise_id = req.body.exercise_id;

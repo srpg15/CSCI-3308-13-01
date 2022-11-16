@@ -25,13 +25,13 @@
           <td>
           <select class="form-select" aria-label="Default select example" required>
             <option selected>Select Exercise</option>
-            <% exercises.forEach((exercise) => { %>
+            <% data.forEach((exercise) => { %>
               <option value='<%- exercise.exercise_id %>' ><%- exercise.exercise_name %></option>
            <% }) %>          
           </select>
             </td>
             <td>
-              <button type="submit" class="btn btn-primary"style="background:snow;color:grey;display:block; border-radius: 6px;font-size: 15px; width:80px">add</button>
+              <button type="submit" class="btn btn-primary"style="background:snow;color:grey;display:block; border-radius: 6px;font-size: 15px; width:80px" onclick="alertSomething('added!')">add</button>
             </td>
           </form>
           </tr>
@@ -116,9 +116,9 @@
             <td>
               <select class="form-select" aria-label="Default select example">
             <option selected>Your Exercise</option>
-            <option value="1">Database</option>
-            <option value="2">Database</option>
-            <option value="3">Database</option>
+            <<% user.forEach((exercise) => { %>
+              <option value='<%- exercise.exercise_name %>' ><%- exercise.exercise_name %></option>
+           <% }) %>     
           </select>
             </td>
           <td>
@@ -129,9 +129,9 @@
             
           </table>
           
-            
-
+           
         </div>
+
       </main>
 
 </main>
