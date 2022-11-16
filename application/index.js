@@ -256,12 +256,11 @@ const dbConfig = {
 //   app.use(auth);
 
 // GET /logout
+
 app.get("/logout", (req, res) => {
   req.session.destroy();
   res.redirect("/login");
 });
-
-
  
   app.listen(3000);
 
