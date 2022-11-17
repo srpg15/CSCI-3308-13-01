@@ -43,9 +43,9 @@
               <tr>
                 <th scope="col">Day</th>
                 <th scope="col">Exercise name</th>
-                <th scope="col">Reqs</th>
-                <th scope="col">Set Number</th>
-                <th scope="col">description</th>
+                <th scope="col">Reps</th>
+                <th scope="col">Number of Sets</th>
+                <th scope="col">Description</th>
               </tr>
             </thead>
             <tbody>
@@ -134,7 +134,7 @@
                   <% } %>
                 <% }); %>
               </tr>
-              <tr>
+              <tr>  
                 <% day.forEach((dayVal) => { %>
                   <% if (dayVal.day_name === 'Saturday') { %>
                      <% user.forEach((workout) => { %>
