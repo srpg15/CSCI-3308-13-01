@@ -18,6 +18,7 @@
 * removed the unused tabs from nav bar and reordered by @tayasherstyukova in https://github.com/srpg15/CSCI-3308-13-01/pull/35 -- 11/16/2022
 * Putting alerts for adding and removing exercise @sagu3628 https://github.com/srpg15/CSCI-3308-13-01/pull/39 -- 11/16/2022
 * Added Favicon for Browser by @RubyGavagan https://github.com/srpg15/CSCI-3308-13-01/pull/40 -- 11/16/2022
+* Update index.js by @HassanAlanazi in https://github.com/srpg15/CSCI-3308-13-01/pull/41
 
 ## New Contributors
 * @srpg15 made their first contribution in https://github.com/srpg15/CSCI-3308-13-01/pull/28
