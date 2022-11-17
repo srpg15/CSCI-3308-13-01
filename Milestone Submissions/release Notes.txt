@@ -6,6 +6,7 @@
 * fixed login and register API by @RubyGavagan in https://github.com/srpg15/CSCI-3308-13-01/pull/30 -- 11/10/2022
 * get logout fixes by @RubyGavagan in https://github.com/srpg15/CSCI-3308-13-01/pull/30 -- 11/10/2022
 * Update index.js by @RubyGavagan in https://github.com/srpg15/CSCI-3308-13-01/pull/30 -- 11/10/2022
+* fixed the login redirecting and the syntax in insert.sql file by @tayasherstyukova  in https://github.com/srpg15/CSCI-3308-13-01/pull/33 -- 11/10/2022
 * add button on home by @RubyGavagan in https://github.com/srpg15/CSCI-3308-13-01/pull/30 -- 11/10/2022
 * Fixing login and register api routes by @HassanAlanazi in https://github.com/srpg15/CSCI-3308-13-01/pull/31
 * fixed user_id = undefined by @HassanAlanazi in https://github.com/srpg15/CSCI-3308-13-01/pull/32
