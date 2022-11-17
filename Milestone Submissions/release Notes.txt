@@ -10,11 +10,11 @@
 * Fixing login and register api routes by @HassanAlanazi in https://github.com/srpg15/CSCI-3308-13-01/pull/31
 * fixed user_id = undefined by @HassanAlanazi in https://github.com/srpg15/CSCI-3308-13-01/pull/32
 * fixed logout by @tayasherstyukova in https://github.com/srpg15/CSCI-3308-13-01/pull/33 -- 11/14/2022
-* Updates to add/remove button styling by @RubyGavagan in https://github.com/srpg15/CSCI-3308-13-01/pull/34 -- 11/16/2022
-* removed the unused tabs from nav bar and reordered by @tayasherstyukova in https://github.com/srpg15/CSCI-3308-13-01/pull/35 -- 11/16/2022
 * Connecting dropdown to database @sagu3628 https://github.com/srpg15/CSCI-3308-13-01/pull/36-- 11/14/2022
 * Connecting dropdown to user table @sagu3628 https://github.com/srpg15/CSCI-3308-13-01/37-- 11/15/2022
 * Adding middleware to the login page @sagu3628 https://github.com/srpg15/CSCI-3308-13-01/pull/38-- 11/15/2022
+* Updates to add/remove button styling by @RubyGavagan in https://github.com/srpg15/CSCI-3308-13-01/pull/34 -- 11/16/2022
+* removed the unused tabs from nav bar and reordered by @tayasherstyukova in https://github.com/srpg15/CSCI-3308-13-01/pull/35 -- 11/16/2022
 * Putting alerts for adding and removing exercise @sagu3628 https://github.com/srpg15/CSCI-3308-13-01/pull/39 -- 11/16/2022
 * Added Favicon for Browser by @RubyGavagan https://github.com/srpg15/CSCI-3308-13-01/pull/40 -- 11/16/2022
 
