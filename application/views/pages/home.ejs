@@ -50,19 +50,23 @@
             </thead>
             <tbody>
               <tr>
+                <% let inc = 0 %>
                 <% day.forEach((dayVal) => { %>
                   <% if (dayVal.day_name === 'Sunday') { %>
                      <% user.forEach((workout) => { %>
-                        <% if (workout.exercise_id === dayVal.exercise_id) { %>
+                        <% if (workout.exercise_id === dayVal.exercise_id && inc === 0) { %>
                           <tr>
                             <th scope="row">Sunday</th>
+                            <td> <%- dayVal.day_name %></td>
                             <td> <%- workout.exercise_name %></td>
                             <td> <%- workout.reps %></td>
                             <td> <%- workout.set_num %></td>
                             <td> <%- workout.description %></td>
+                            <% inc++; %>
                           </tr>
                         <% } %>
                       <% }); %>
+                      <% inc = 0; %>
                   <% } %>
                 <% }); %>
               </tr>
@@ -70,16 +74,19 @@
                 <% day.forEach((dayVal) => { %>
                   <% if (dayVal.day_name === 'Monday') { %>
                      <% user.forEach((workout) => { %>
-                        <% if (workout.exercise_id === dayVal.exercise_id) { %>
+                        <% if (workout.exercise_id === dayVal.exercise_id && inc === 0) { %>
                           <tr>
-                          <th scope="row">Monday</th>
-                          <td> <%- workout.exercise_name %></td>
-                          <td> <%- workout.reps %></td>
-                          <td> <%- workout.set_num %></td>
-                          <td> <%- workout.description %></td>
-                        </tr>
+                            <th scope="row">Monday</th>
+                            <td> <%- dayVal.day_name %></td>
+                            <td> <%- workout.exercise_name %></td>
+                            <td> <%- workout.reps %></td>
+                            <td> <%- workout.set_num %></td>
+                            <td> <%- workout.description %></td>
+                            <% inc++; %>
+                          </tr>
                         <% } %>
                       <% }); %>
+                      <% inc = 0; %>
                   <% } %>
                 <% }); %>
               </tr>
@@ -87,16 +94,19 @@
                 <% day.forEach((dayVal) => { %>
                   <% if (dayVal.day_name === 'Tuesday') { %>
                      <% user.forEach((workout) => { %>
-                        <% if (workout.exercise_id === dayVal.exercise_id) { %>
+                        <% if (workout.exercise_id === dayVal.exercise_id && inc === 0) { %>
                           <tr>
                             <th scope="row">Tuesday</th>
+                            <td> <%- dayVal.day_name %></td>
                             <td> <%- workout.exercise_name %></td>
                             <td> <%- workout.reps %></td>
                             <td> <%- workout.set_num %></td>
                             <td> <%- workout.description %></td>
+                            <% inc++; %>
                           </tr>
                         <% } %>
                       <% }); %>
+                      <% inc = 0; %>
                   <% } %>
                 <% }); %>
               </tr>
@@ -104,16 +114,19 @@
                 <% day.forEach((dayVal) => { %>
                   <% if (dayVal.day_name === 'Wednesday') { %>
                      <% user.forEach((workout) => { %>
-                        <% if (workout.exercise_id === dayVal.exercise_id) { %>
+                        <% if (workout.exercise_id === dayVal.exercise_id && inc === 0) { %>
                           <tr>
                             <th scope="row">Wednesday</th>
+                            <td> <%- dayVal.day_name %></td>
                             <td> <%- workout.exercise_name %></td>
                             <td> <%- workout.reps %></td>
                             <td> <%- workout.set_num %></td>
                             <td> <%- workout.description %></td>
+                            <% inc++; %>
                           </tr>
                         <% } %>
                       <% }); %>
+                      <% inc = 0; %>
                   <% } %>
                 <% }); %>
               </tr>
@@ -121,16 +134,19 @@
                 <% day.forEach((dayVal) => { %>
                   <% if (dayVal.day_name === 'Thursday') { %>
                      <% user.forEach((workout) => { %>
-                        <% if (workout.exercise_id === dayVal.exercise_id) { %>
+                        <% if (workout.exercise_id === dayVal.exercise_id && inc === 0) { %>
                           <tr>
                             <th scope="row">Thursday</th>
+                            <td> <%- dayVal.day_name %></td>
                             <td> <%- workout.exercise_name %></td>
                             <td> <%- workout.reps %></td>
                             <td> <%- workout.set_num %></td>
                             <td> <%- workout.description %></td>
+                            <% inc++; %>
                           </tr>
                         <% } %>
                       <% }); %>
+                      <% inc = 0; %>
                   <% } %>
                 <% }); %>
               </tr>
@@ -138,16 +154,19 @@
                 <% day.forEach((dayVal) => { %>
                   <% if (dayVal.day_name === 'Friday') { %>
                      <% user.forEach((workout) => { %>
-                        <% if (workout.exercise_id === dayVal.exercise_id) { %>
+                        <% if (workout.exercise_id === dayVal.exercise_id && inc === 0) { %>
                           <tr>
                             <th scope="row">Friday</th>
+                            <td> <%- dayVal.day_name %></td>
                             <td> <%- workout.exercise_name %></td>
                             <td> <%- workout.reps %></td>
                             <td> <%- workout.set_num %></td>
                             <td> <%- workout.description %></td>
+                            <% inc++; %>
                           </tr>
                         <% } %>
                       <% }); %>
+                      <% inc = 0; %>
                   <% } %>
                 <% }); %>
               </tr>
@@ -155,16 +174,19 @@
                 <% day.forEach((dayVal) => { %>
                   <% if (dayVal.day_name === 'Saturday') { %>
                      <% user.forEach((workout) => { %>
-                        <% if (workout.exercise_id === dayVal.exercise_id) { %>
+                        <% if (workout.exercise_id === dayVal.exercise_id && inc === 0) { %>
                           <tr>
                             <th scope="row">Saturday</th>
+                            <td> <%- dayVal.day_name %></td>
                             <td> <%- workout.exercise_name %></td>
                             <td> <%- workout.reps %></td>
                             <td> <%- workout.set_num %></td>
                             <td> <%- workout.description %></td>
+                            <% inc++; %>
                           </tr>
                         <% } %>
                       <% }); %>
+                      <% inc = 0; %>
                   <% } %>
                 <% }); %>
               </tr>
