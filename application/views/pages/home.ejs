@@ -31,7 +31,7 @@
           </select>
             </td>
             <td>
-              <button type="submit" class="btn btn-primary"style="background-color:#d4e7fc;color:#3c3c3c;display:block; border-radius: 6px;font-size: 15px; width:80px" onclick="alertSomething('added!')">add</button>
+              <button type="submit" class="btn btn-primary"style="background-color:#d4e7fc;color:#3c3c3c;display:block; border-radius: 6px;font-size: 15px; width:80px" onclick="alertSomething('added!')">Add Exercise</button>
             </td>
           </form>
           </tr>
@@ -44,11 +44,28 @@
                 <th scope="col">Day</th>
                 <th scope="col">Exercise name</th>
                 <th scope="col">Reps</th>
-                <th scope="col">Number of Sets</th>
+                <th scope="col">Sets</th>
                 <th scope="col">Description</th>
               </tr>
             </thead>
             <tbody>
+              <tr>
+                <% day.forEach((dayVal) => { %>
+                  <% if (dayVal.day_name === 'Sunday') { %>
+                     <% user.forEach((workout) => { %>
+                        <% if (workout.exercise_id === dayVal.exercise_id) { %>
+                          <tr>
+                            <th scope="row">Sunday</th>
+                            <td> <%- workout.exercise_name %></td>
+                            <td> <%- workout.reps %></td>
+                            <td> <%- workout.set_num %></td>
+                            <td> <%- workout.description %></td>
+                          </tr>
+                        <% } %>
+                      <% }); %>
+                  <% } %>
+                <% }); %>
+              </tr>
               <tr>
                 <% day.forEach((dayVal) => { %>
                   <% if (dayVal.day_name === 'Monday') { %>
@@ -151,23 +168,6 @@
                   <% } %>
                 <% }); %>
               </tr>
-              <tr>
-                <% day.forEach((dayVal) => { %>
-                  <% if (dayVal.day_name === 'Sunday') { %>
-                     <% user.forEach((workout) => { %>
-                        <% if (workout.exercise_id === dayVal.exercise_id) { %>
-                          <tr>
-                            <th scope="row">Sunday</th>
-                            <td> <%- workout.exercise_name %></td>
-                            <td> <%- workout.reps %></td>
-                            <td> <%- workout.set_num %></td>
-                            <td> <%- workout.description %></td>
-                          </tr>
-                        <% } %>
-                      <% }); %>
-                  <% } %>
-                <% }); %>
-              </tr>
             </tbody>
           </table>
           <table>
@@ -194,7 +194,7 @@
           </select>
             </td>
           <td>
-            <button type="submit" class="btn btn-primary"style="background-color:#d4e7fc;color:#3c3c3c;display:block; border-radius: 6px;font-size: 15px; width:100px" onclick="alertSomething('remove')">remove</button>
+            <button type="submit" class="btn btn-primary"style="background-color:#d4e7fc;color:#3c3c3c;display:block; border-radius: 6px;font-size: 15px; width:100px" onclick="alertSomething('remove')">Remove Exercise</button>
           </td>
           </form>
             </tr>
