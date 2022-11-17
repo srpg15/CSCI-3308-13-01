@@ -299,10 +299,7 @@ app.post('/home/add', (req, res)=>{
     res.redirect('/home');
   })
   .catch((err)=>{
-    res.render('pages/home', {
-      message: `couldn't add the exercise.`,
-      error: true
-    });
+    res.redirect('/home');
   });
 
 });
@@ -324,6 +321,7 @@ app.post('/home/delete', (req, res) => {
     })
     .catch((err)=>{
       console.log(err);
+      res.redirect('/home');
     });
   })
   .catch((err)=>{
