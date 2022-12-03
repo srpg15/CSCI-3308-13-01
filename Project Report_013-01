@@ -41,6 +41,11 @@ Contributions:
 
 
     Saulo Guzman:
+    My contributions would mostly come from the Frontend and middleware implementations.
+    -I created the main design for the homepage with HTML by adding table layout, dropdown bars, and buttons for both add and remove.
+   -I created an API that got both data from the exercise table and user table which present the information when you click on the drop bar.
+  -Create a middleware and alerts which require the user to have information for login, and everytime they add or remove an exercise, would put an alert to users.
+
 
 
     Hassan Alanazi:
