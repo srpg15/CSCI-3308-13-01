@@ -59,4 +59,6 @@ Test results:
 
 
 Deployment:
-
+user needs to have docker installed on the computer
+they go into the application directory and type docker compose up
+then, they type localhost3000 in the browser of choice
