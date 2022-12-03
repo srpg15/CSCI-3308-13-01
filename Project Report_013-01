@@ -32,7 +32,12 @@ Contributions:
      On my end, I helped with front-end stuff. First, I did the initial set-up for the project, such as creating the directory and the code for basic functionalities that we used in other labs, such as log in, register pages and homepage.
     Second, I created the design CSS for the log in and register pages by using internal and external CSS. I helped trace some other bugs like log in form giving an error when entering the password, incorrect destruction of the session when logging out, finding errors in the SQL files and adjusting the buttons.
 
-    Evan Zachary:
+    Evan Zachary: 
+    My contributions mostly came in the form of the backend and middleware linking the two. I was responsible for creating the database structure and contributed to the 
+      I assisted in the creation of the middleware between the database and the frontend, helping out with making the queries inside the api calls in order to display 
+      the information and make sure that each user has the appropriate dataset for their account. As a minor role i helped out with displaying the information on the frontend
+      homepage in association with just general bugfixing and team consulting.
+
 
 
     Saulo Guzman:
