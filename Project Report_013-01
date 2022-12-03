@@ -29,7 +29,8 @@ Contributions:
 
 
     Taisiia Sherstiukova:
-
+     On my end, I helped with front-end stuff. First, I did the initial set-up for the project, such as creating the directory and the code for basic functionalities that we used in other labs, such as log in, register pages and homepage.
+    Second, I created the design CSS for the log in and register pages by using internal and external CSS. I helped trace some other bugs like log in form giving an error when entering the password, incorrect destruction of the session when logging out, finding errors in the SQL files and adjusting the buttons.
 
     Evan Zachary:
 
