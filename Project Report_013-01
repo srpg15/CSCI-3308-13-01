@@ -62,6 +62,24 @@ Use Case Diagram:
 
 Test results:
 
+    Use cases:-
+1- 	When a new user tries logging in to the website.
+2- 	When an existing user tries to login. But enter an incorrect password.
+3- 	When an existing user tries to login. and enters a correct password.
+4- 	When a user tries to add/remove an exercise, but leaves the fields empty.
+
+
+
+Test Cases:-
+1-	When a new user tries to login, the website redirects the user to the register page and prompts the user that he has to create an account, because he doesn’t have an account.
+2-	When the user enters his username correctly, but his password is incorrect, the website prompts him that the entered password is incorrect.
+3-	When the user enters both the username and the password correctly, the website redirects him to the home page.
+4-	When the user leaves the input fields empty, the website won’t add/remove any exercises, and it will send a message to the user.
+Observations:-
+- When testing the use cases we noticed that the most performed tasks by the website were adding or removing exercises. 
+The reason for that is because the users were managing their workout routine. They weren’t leaving the input fields empty, because of the clear design of the add/remove areas in the homepage. We also noticed that the user behavior was consistent with the third use case.
+
+
 
 Deployment:
 user needs to have docker installed on the computer
