@@ -38,7 +38,18 @@ Contributions:
 
 
     Hassan Alanazi:
-  
+      Most of my contributions to this project were in the middleware.
+      Technologies worked on: NodeJs, Ejes.
+      I was responsible on adding functionality to the features in the home and profile pages.
+      -Homepage features that I worked on:-
+        -	Adding exercises to the user’s weekly schedule which is displayed in the homepage.
+        -	Removing exercises from the user’s weekly schedule.
+      -Profile page features that I worked on:-
+        -	Option for the user to change the username of his account.
+        -	Option to the user to Change the password of his account.
+      -Connecting both these pages to the database.
+      -Updating the database.
+
   
 Use Case Diagram:
 
